@@ -1,0 +1,39 @@
+-----------------
+## USB Drivers ##
+-----------------
+
+2016 R1
+Built 2016-06-23
+Version 16.1.1.0
+
+### Changes ###
+- Added signed USB CDC drivers.
+- Updated driver signing algorithm.
+
+### Issues ###
+- None.
+
+---------------------------------------------------------------------------------------------------
+
+2015 R1
+Built 2015-08-25
+Version 15.7.9.0
+
+### Changes ###
+- Fixed the bootloader being unable to communicate with some computers.
+
+### Issues ###
+- None.
+
+---------------------------------------------------------------------------------------------------
+
+2014 R2
+Built 2014-07-31
+Version 2.0.0.0
+
+### Changes ###
+-Changed the name, category, and manufacturer of the drivers.
+-Removed the legacy drivers.
+
+### Issues ###
+- None

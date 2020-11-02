@@ -1,0 +1,35 @@
+; Installation inf for GHI Bootloader Interface
+; Copyright (c) GHI Electronics, LLC 2015. All rights reserved.
+
+[Version]
+Signature="$Windows NT$"
+Class=Ports
+ClassGuid={4D36E978-E325-11CE-BFC1-08002BE10318}
+Provider=%ManufacturerName%
+CatalogFile=GHI_Bootloader_Interface.cat
+DriverVer=03/28/2016,16.1.1.0
+
+[Manufacturer]
+%ManufacturerName%=DeviceList,NTamd64,NTx86
+
+[DeviceList.NTamd64]
+%DeviceName%=DriverInstall, USB\VID_1B9F&PID_0104
+
+[DeviceList.NTx86]
+%DeviceName%=DriverInstall, USB\VID_1B9F&PID_0104
+
+[DriverInstall.NT]
+Include=mdmcpq.inf
+CopyFiles=FakeModemCopyFileSection 
+AddReg=DriverInstall.NT.AddReg
+
+[DriverInstall.NT.AddReg]
+HKR,,EnumPropPages32,,"MsPorts.dll,SerialPortPropPageProvider"
+
+[DriverInstall.NT.Services]
+Include=mdmcpq.inf
+AddService=usbser, 0x00000002, LowerFilter_Service_Inst
+
+[Strings]
+ManufacturerName="GHI Electronics, LLC"
+DeviceName="GHI Bootloader Interface"

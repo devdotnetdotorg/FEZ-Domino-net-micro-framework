@@ -1,0 +1,47 @@
+; Installation inf for GHI NETMF Interface
+; Copyright (c) GHI Electronics, LLC 2015. All rights reserved.
+
+[Version]
+Signature="$Windows NT$"
+Class=USBDevice
+ClassGUID={88BAE032-5A81-49f0-BC3D-A4FF138216D6}
+Provider=%ManufacturerName%
+CatalogFile=GHI_NETMF_Interface.cat
+DriverVer=03/28/2016,16.1.1.0
+
+[Manufacturer]
+%ManufacturerName%=DeviceList,NTamd64,NTx86
+
+[DeviceList.NTamd64]
+%DeviceName%=DriverInstall, USB\VID_1B9F&PID_0102
+
+[DeviceList.NTx86]
+%DeviceName%=DriverInstall, USB\VID_1B9F&PID_0102
+
+[ClassInstall32]
+AddReg=ClassInstall_AddReg
+
+[ClassInstall_AddReg]
+HKR,,,,%ClassName%
+HKR,,NoInstallClass,,1
+HKR,,IconPath,0x00010000,"%systemroot%\system32\setupapi.dll,-20"
+HKR,,LowerLogoVersion,,5.2
+
+[DriverInstall]
+Include=winusb.inf
+Needs=WINUSB.NT
+
+[DriverInstall.Services]
+Include=winusb.inf
+Needs=WINUSB.NT.Services
+
+[DriverInstall.HW]
+AddReg=Dev_AddReg
+
+[Dev_AddReg]
+HKR,,DeviceInterfaceGUIDs,0x10000,"{D32D1D64-963D-463E-874A-8EC8C8082CBF}"
+
+[Strings]
+ManufacturerName="GHI Electronics, LLC"
+DeviceName="GHI NETMF Interface"
+ClassName="Universal Serial Bus devices"
